@@ -1,7 +1,3 @@
-function randomNum(max) {
-    return Math.floor(Math.random() * max)
-}
-
 // some button
 let myButton = document.querySelector("button")
 function handleClick(){
@@ -9,9 +5,27 @@ function handleClick(){
 }
 myButton.addEventListener('click', handleClick)
 
-// random color button
-let colorButton = document.querySelector("#random-color")
+// dark mode setup
+let darkMode = true
+let colorButton = document.querySelector("#theme")
 function handleClick2() {
-    document.body.style.backgroundColor = "rgb(" + randomNum(255) + ", " + randomNum(255) + ", " + randomNum(255) + ")"
+    let color = "rgb(255,255,255)"
+    let textCol = "rgb(0,0,0)"
+    let text = "Dark Mode"
+
+    if (darkMode) {
+        darkMode = false
+        text = "Light Mode"
+        textCol = color
+        color = "rgb(0,0,0)"
+    }
+    else {
+        darkMode = true
+    }
+
+    document.body.style.backgroundColor = color
+    document.body.style.color = textCol
+    colorButton.textContent = text
 }
+
 colorButton.addEventListener('click', handleClick2)
